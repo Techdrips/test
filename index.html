@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pece</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #f0f7f4;
+      font-family: 'Raleway', sans-serif;
+      color: #333;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #dcedc8;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #c8e6c9;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      padding: 14px 24px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #2e7d32;
+      transition: background-color 0.2s ease;
+    }
+
+    nav button:hover {
+      background-color: #aed9b5;
+    }
+
+    section {
+      display: none;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    input[type="text"] {
+      padding: 12px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      width: 80%;
+      max-width: 400px;
+    }
+
+    button.search-btn {
+      margin-top: 10px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #c8e6c9;
+      color: #2e7d32;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Pece</h1>
+  </header>
+  <nav>
+    <button onclick="switchTab('search')">Search</button>
+    <button onclick="switchTab('journal')">Journal</button>
+    <button onclick="switchTab('inspiration')">Inspiration</button>
+  </nav>
+
+  <section id="search" class="active">
+    <h2>Search Mindfully</h2>
+    <input type="text" id="searchInput" placeholder="What are you seeking today?" />
+    <button class="search-btn" onclick="performSearch()">Search</button>
+  </section>
+
+  <section id="journal">
+    <h2>Your Thoughts</h2>
+    <p>Take a moment to write down what’s on your mind today.</p>
+    <textarea style="width:80%; height:150px; border-radius:8px; padding:10px;"></textarea>
+  </section>
+
+  <section id="inspiration">
+    <h2>Inspiration</h2>
+    <p>“Almost everything will work again if you unplug it for a few minutes… including you.” – Anne Lamott</p>
+  </section>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function performSearch() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (query) {
+        window.location.href = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
+      }
+    }
+  </script>
+</body>
+</html>
